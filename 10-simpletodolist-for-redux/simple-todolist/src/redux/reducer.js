@@ -29,7 +29,7 @@ let initState = {
 
 
 export const reducer = (state = initState, action) => {
-
+	debugger
 	switch (action.type ) {
 		case ADD_TITLE:
 			return {
@@ -46,8 +46,7 @@ export const reducer = (state = initState, action) => {
 		case DELETE_TASK:
 			return {
 				...state,
-				tasks: state.tasks.map(task => task.id !== action.taskId),
-
+				tasks: [...state.tasks].filter (task => task.id !== action.taskId)
 			};
 		default :
 			return state

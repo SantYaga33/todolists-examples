@@ -23,8 +23,9 @@ const TodoList = (props) => {
         console.log( e.currentTarget.getAttribute('checked'));
     };
     const onDeleteTask = (e) =>{
-        // props.onDeleteTaskStore(task.id);
-        console.log( e.currentTarget.getAttribute('id'));
+        let taskId =  e.currentTarget.getAttribute('id');
+        props.onDeleteTaskStore(taskId);
+
     };
 
     let newTasks = props.tasks.map(task =>  <li key={task.id} id={task.id}><input type="checkbox" checked={task.checked}
