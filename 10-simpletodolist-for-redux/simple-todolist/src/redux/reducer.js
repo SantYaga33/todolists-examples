@@ -27,7 +27,6 @@ let initState = {
 	id: 5
 };
 
-
 export const reducer = (state = initState, action) => {
 
 	switch (action.type ) {

@@ -14,7 +14,7 @@ const TodoItem = (props) => {
 	};
 
 	return (
-		<li  id={props.id} ><input type="checkbox" checked={props.status} onChange={onCheckedChanges}/> {props.title}
+		<li id={props.id} ><input type="checkbox" checked={props.status} onChange={onCheckedChanges}/> {props.title}
 		<button   onClick={onDeleteTask}>X</button></li>
 	)
 
