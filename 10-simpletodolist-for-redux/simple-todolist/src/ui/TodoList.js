@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import TodoItem  from "./Todo_item";
 import { onAddTaskeAC, onAddTitleAC, onChangeStatusAC, onDeleteTaskAC } from "../redux/reducer";
 
 const TodoList = (props) => {
@@ -18,19 +19,19 @@ const TodoList = (props) => {
         props.onAddTaskStore(newTask);
     };
 
-    const onCheckedChanges = (e) =>{
-        // props.onChangeStatusStore (task.id, e.currentTarget.checked);
-        console.log( e.currentTarget.getAttribute('checked'));
-    };
-    const onDeleteTask = (e) =>{
-        let taskId =  e.currentTarget.getAttribute('id');
-        props.onDeleteTaskStore(taskId);
+    // const onCheckedChanges = (e) =>{
+    //     let taskId =  e.currentTarget.getAttribute('id');
+    //     let status = e.currentTarget.checked;
+    //     props.onChangeStatusStore (taskId, status );
+    // };
+    // const onDeleteTask = (e) =>{
+    //     let taskId =  e.currentTarget.getAttribute('id');
+    //     props.onDeleteTaskStore(taskId);
+    //
+    // };
 
-    };
-
-    let newTasks = props.tasks.map(task =>  <li key={task.id} id={task.id}><input type="checkbox" checked={task.checked}
-                                            onChange={onCheckedChanges}/>
-                                            {task.title}<button id={task.id} onClick={onDeleteTask}>X</button></li>);
+    let newTasks = props.tasks.map(task => <TodoItem key={task.id} id={task.id} title={task.title}
+                                                     status={task.status}/> );
     return (
         <div>
             <h1>Todo List</h1>
@@ -60,14 +61,14 @@ const mapdispatchtoProps = (dispatch) =>{
           const action = onAddTaskeAC(newTask);
           dispatch(action);
       },
-      onDeleteTaskStore: (taskId) =>{
-          const action = onDeleteTaskAC(taskId);
-          dispatch(action);
-      },
-      onChangeStatusStore: (taskId, status) =>{
-          const action = onChangeStatusAC(taskId,status);
-          dispatch(action);
-      }
+      // onDeleteTaskStore: (taskId) =>{
+      //     const action = onDeleteTaskAC(taskId);
+      //     dispatch(action);
+      // },
+      // onChangeStatusStore: (taskId, status) =>{
+      //     const action = onChangeStatusAC(taskId, status);
+      //     dispatch(action);
+      // }
     }
 };
 

@@ -18,10 +18,10 @@ export const onChangeStatusAC = (taskId, status) =>{
 
 let initState = {
 	tasks: [
-		{ id: 0, title: 'CSS', checked: true },
-		{ id: 1, title:'JS', checked: true },
-		{ id: 2, title: 'REACT', checked: false },
-		{ id: 3, title: 'REDUX', checked: true }
+		{ id: 0, title: 'CSS', status: true },
+		{ id: 1, title:'JS', status: true },
+		{ id: 2, title: 'REACT', status: false },
+		{ id: 3, title: 'REDUX', status: true }
 	],
 	title: '',
 	id: 5
@@ -29,7 +29,7 @@ let initState = {
 
 
 export const reducer = (state = initState, action) => {
-	debugger
+
 	switch (action.type ) {
 		case ADD_TITLE:
 			return {
@@ -46,7 +46,18 @@ export const reducer = (state = initState, action) => {
 		case DELETE_TASK:
 			return {
 				...state,
-				tasks: [...state.tasks].filter (task => task.id !== action.taskId)
+				tasks: state.tasks.filter (task => task.id !== +action.taskId)
+			};
+		case CHANGE_STATUS:
+			return {
+				...state,
+				tasks: state.tasks.map (task => {
+				if(task.id === +action.taskId) {
+					return { ...task, status: !!action.status }
+				} else {
+					return task
+				}
+				})
 			};
 		default :
 			return state
