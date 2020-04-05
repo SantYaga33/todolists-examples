@@ -1,15 +1,15 @@
 import React from "react";
-import {  onChangeStatusAC, onDeleteTaskAC } from "../redux/reducer";
+import { onChangeStatus,  onDeleteTask} from "../redux/reducer";
 import { connect } from "react-redux";
 
 const TodoItem = (props) => {
 
 	const onCheckedChanges = (e) =>{
-		props.onChangeStatusStore (props.id, e.currentTarget.checked );
+		props.onChangeStatus (props.id, e.currentTarget.checked );
 	};
 
 	const onDeleteTask = (e) =>{
-		props.onDeleteTaskStore(props.id);
+		props.onDeleteTask(props.id);
 
 	};
 
@@ -21,21 +21,7 @@ const TodoItem = (props) => {
 };
 
 
-const mapdispatchtoProps = (dispatch) =>{
-	return {
-
-		onDeleteTaskStore: (taskId) =>{
-			const action = onDeleteTaskAC(taskId);
-			dispatch(action);
-		},
-		onChangeStatusStore: (taskId, status) =>{
-			const action = onChangeStatusAC(taskId, status);
-			dispatch(action);
-		}
-	}
-};
-
-const connectTodoItem = connect(null, mapdispatchtoProps )(TodoItem);
+const connectTodoItem = connect(null, {onDeleteTask, onChangeStatus })(TodoItem);
 
 export default connectTodoItem;
 

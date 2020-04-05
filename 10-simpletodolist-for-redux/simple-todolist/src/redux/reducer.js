@@ -3,16 +3,16 @@ export const ADD_TASK = 'ADD_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 export const CHANGE_STATUS = 'CHANGE_STATUS';
 
-export const onAddTitleAC = (newTitle) =>{
+export const onAddTitle = (newTitle) =>{
 	return { type:ADD_TITLE, newTitle }
 };
-export const onAddTaskeAC = (newTask) =>{
+export const onAddTask = (newTask) =>{
 	return { type:ADD_TASK, newTask }
 };
-export const onDeleteTaskAC = (taskId) =>{
+export const onDeleteTask = (taskId) =>{
 	return { type:DELETE_TASK, taskId }
 };
-export const onChangeStatusAC = (taskId, status) =>{
+export const onChangeStatus = (taskId, status) =>{
 	return { type:CHANGE_STATUS, taskId, status }
 };
 

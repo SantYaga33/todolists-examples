@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from "react-redux";
 import TodoItem  from "./Todo_item";
-import { onAddTaskeAC, onAddTitleAC, onChangeStatusAC, onDeleteTaskAC } from "../redux/reducer";
+import { onAddTask, onAddTitle } from "../redux/reducer";
 
 const TodoList = (props) => {
 
     const onAddTitle =(e) =>{
         let newTitle = e.currentTarget.value;
-        props.onAddTitleStore(newTitle);
+        props.onAddTitle(newTitle);
 
     };
     const onAddTask = () =>{
@@ -16,7 +16,7 @@ const TodoList = (props) => {
             title: props.title,
             checked: false
         };
-        props.onAddTaskStore(newTask);
+        props.onAddTask(newTask);
     };
 
 
@@ -41,27 +41,8 @@ const mapStatetoProps = (state) =>{
       title: state.title
   }
 };
-const mapdispatchtoProps = (dispatch) =>{
-  return {
-      onAddTitleStore: (newTitle) =>{
-          const action = onAddTitleAC(newTitle);
-          dispatch(action);
-      },
-      onAddTaskStore: (newTask) =>{
-          const action = onAddTaskeAC(newTask);
-          dispatch(action);
-      },
-      // onDeleteTaskStore: (taskId) =>{
-      //     const action = onDeleteTaskAC(taskId);
-      //     dispatch(action);
-      // },
-      // onChangeStatusStore: (taskId, status) =>{
-      //     const action = onChangeStatusAC(taskId, status);
-      //     dispatch(action);
-      // }
-    }
-};
 
-const connectTodolist = connect(mapStatetoProps, mapdispatchtoProps )(TodoList);
+
+const connectTodolist = connect(mapStatetoProps, {onAddTitle, onAddTask} )(TodoList);
 
 export default connectTodolist;
