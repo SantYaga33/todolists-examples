@@ -19,19 +19,9 @@ const TodoList = (props) => {
         props.onAddTaskStore(newTask);
     };
 
-    // const onCheckedChanges = (e) =>{
-    //     let taskId =  e.currentTarget.getAttribute('id');
-    //     let status = e.currentTarget.checked;
-    //     props.onChangeStatusStore (taskId, status );
-    // };
-    // const onDeleteTask = (e) =>{
-    //     let taskId =  e.currentTarget.getAttribute('id');
-    //     props.onDeleteTaskStore(taskId);
-    //
-    // };
 
     let newTasks = props.tasks.map(task => <TodoItem key={task.id} id={task.id} title={task.title}
-                                                     status={task.status}/> );
+                                                         status={task.status}/> );
     return (
         <div>
             <h1>Todo List</h1>
