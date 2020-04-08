@@ -21,7 +21,7 @@ const TodoList = (props) => {
 
 
     let newTasks = props.tasks.map(task => <TodoItem key={task.id} id={task.id} title={task.title}
-                                                         status={task.status}/> );
+                                                                        status={task.status}/> );
     return (
         <div>
             <h1>Todo List</h1>
@@ -43,6 +43,6 @@ const mapStatetoProps = (state) =>{
 };
 
 
-const connectTodolist = connect(mapStatetoProps, {onAddTitle, onAddTask} )(TodoList);
+const connectTodolist = connect(mapStatetoProps, {onAddTitle, onAddTask})(TodoList);
 
 export default connectTodolist;

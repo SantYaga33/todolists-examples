@@ -8,20 +8,20 @@ const TodoItem = (props) => {
 		props.onChangeStatus (props.id, e.currentTarget.checked );
 	};
 
-	const onDeleteTask = (e) =>{
+	const onDeleteTask = () =>{
 		props.onDeleteTask(props.id);
 
 	};
 
 	return (
 		<li id={props.id} ><input type="checkbox" checked={props.status} onChange={onCheckedChanges}/> {props.title}
-		<button   onClick={onDeleteTask}>X</button></li>
+																	<button onClick={onDeleteTask}>X</button></li>
 	)
 
 };
 
 
-const connectTodoItem = connect(null, {onDeleteTask, onChangeStatus })(TodoItem);
+const connectTodoItem = connect(null, {onDeleteTask, onChangeStatus})(TodoItem);
 
 export default connectTodoItem;
 

@@ -1,7 +1,7 @@
-export const ADD_TITLE = 'ADD_TITLE';
-export const ADD_TASK = 'ADD_TASK';
-export const DELETE_TASK = 'DELETE_TASK';
-export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const ADD_TITLE = '/ui/TodoList/ADD_TITLE';
+export const ADD_TASK = '/ui/TodoList/ADD_TASK';
+export const DELETE_TASK = '/ui/TodoItem/DELETE_TASK';
+export const CHANGE_STATUS = '/ui/TodoItem/CHANGE_STATUS';
 
 export const onAddTitle = (newTitle) =>{
 	return { type:ADD_TITLE, newTitle }
