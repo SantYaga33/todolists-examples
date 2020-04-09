@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import TodoItem  from "./Todo_item";
 import { onAddTask, onAddTitle } from "../redux/reducer";
+import { v4 as uuidv4 } from 'uuid';
 
 const TodoList = (props) => {
 
@@ -11,14 +12,14 @@ const TodoList = (props) => {
 
     };
     const onAddTask = () =>{
+        let uuid = uuidv4();
         let newTask = 	{
-            id: props.id,
+            id: uuid,
             title: props.title,
             checked: false
         };
         props.onAddTask(newTask);
     };
-
 
     let newTasks = props.tasks.map(task => <TodoItem key={task.id} id={task.id} title={task.title}
                                                                         status={task.status}/> );
@@ -37,12 +38,11 @@ const TodoList = (props) => {
 const mapStatetoProps = (state) =>{
   return {
       tasks: state.tasks,
-      id: state.id,
       title: state.title
   }
 };
 
 
-const connectTodolist = connect(mapStatetoProps, {onAddTitle, onAddTask})(TodoList);
+const connectTodolist = connect(mapStatetoProps, {onAddTitle,  onAddTask })(TodoList);
 
 export default connectTodolist;
